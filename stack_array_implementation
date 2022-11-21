@@ -1,0 +1,83 @@
+#include<stdio.h>
+int stk[100],n,choice,top=-1,item,i;
+void push();
+void pop();
+void display();
+int main()
+{
+	printf("Enter the number of elements in stack\n");
+	scanf("%d",&n);
+	while(choice!=4)
+	{
+		 printf("\n1.Push\n2.Pop\n3.Show\n4.Exit");
+		 printf("\nEnter your choice\n");
+		 scanf("%d",&choice);
+		 
+		 switch (choice)
+		 {
+		 	case 1:
+		 		{
+		 			push();
+		 			break;
+				}
+			case 2:
+				{
+					pop();
+					break;
+				}
+			case 3:
+				{
+					display();
+					break;
+				}
+			case 4:
+				{
+					exit(0);
+					
+				}
+			default:
+				{
+					printf("Enter Valid Choice");
+				}
+		 }
+	}
+}
+void push()
+{
+	if(top>=n-1)
+	{
+		printf("Stack Overflow\n");
+	}
+	else
+	{
+		printf("Element to be pushed\n");
+		scanf("%d",&item);
+		top=top+1;
+		stk[top]=item;
+	}
+}
+void pop()
+{
+	if(top=-1)
+	{
+		printf("Stack Underflow\n");
+	}
+	else
+	{
+		item=stk[top];
+		top=top-1;
+	}
+}
+void display()
+{
+	if(top>=0)
+	{
+		printf("Element in stack are\n");
+		for(i=top;i>=0;i--)
+		printf("\n%d",stk[i]);
+	}
+	else
+	{
+		printf("Stack is empty\n");
+	}
+}
