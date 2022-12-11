@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node*next;
+}*head=NULL;
+
+void create(int A[],int n)
+{
+    int i;
+    struct Node*t,*last;
+    head=malloc(sizeof(struct Node));
+    head->data=A[0];
+    head->next=NULL;
+    last=head;
+    
+    for(i=1;i<n;i++)
+    {
+        struct Node*t=malloc(sizeof(struct Node));
+        t->data=A[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+void display(struct Node *head)
+{
+    if(head==NULL)
+    {
+        printf("LL is Empty");
+    }
+    struct Node*ptr=NULL;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        printf("%d ",ptr->data);
+        ptr=ptr->next;
+    }
+}
+void count_nodes(struct Node*head)
+{
+    int count=0;
+    if(head==NULL)
+    {
+        printf("LL is Empty");
+    }
+    struct Node*ptr=NULL;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        count++;
+        ptr=ptr->next;
+    }
+    printf("\nNumber of Nodes is %d",count);
+}
+int main()
+{
+    int a[]={3,5,7,9,11,13};
+    create(a,6);
+    display(head);
+    count_nodes(head);
+    return 0;
+}
