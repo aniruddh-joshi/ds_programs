@@ -1,0 +1,128 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node*next;
+}*head=NULL;
+
+void create(int A[],int n)
+{
+    int i;
+    struct Node*t,*last;
+    head=malloc(sizeof(struct Node));
+    head->data=A[0];
+    head->next=NULL;
+    last=head;
+    
+    for(i=1;i<n;i++)
+    {
+        struct Node*t=malloc(sizeof(struct Node));
+        t->data=A[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+//DISPLAY OF THE NODE
+void display(struct Node *head)
+{
+    if(head==NULL)
+    {
+        printf("LL is Empty");
+    }
+    struct Node*ptr=NULL;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        printf("%d ",ptr->data);
+        ptr=ptr->next;
+    }
+}
+//COUNT OF THE NODES
+void count_nodes(struct Node*head)
+{
+    int count=0;
+    if(head==NULL)
+    {
+        printf("LL is Empty");
+    }
+    struct Node*ptr=NULL;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        count++;
+        ptr=ptr->next;
+    }
+    printf("\nNumber of Nodes is %d",count);
+}
+//SUM OF ELEMENTS IN THE NODE
+int sum_of_element(struct node*head)
+{
+	int sum=0;
+	if(head==NULL)
+	{
+		printf("Linked List is empty");
+	}
+	struct Node*ptr=NULL;
+	ptr=head;
+	while(ptr!=NULL){
+		sum=sum+ptr->data;
+		ptr=ptr->next;
+	}
+	printf("\n%d is the sum",sum);
+
+}
+//MAX ELEMENT IN NODE
+int max_element()
+{
+	int max;
+	struct Node*ptr=head;
+	if(head==NULL)
+	{
+		printf("Linked List is empty");
+	}
+	else
+	{
+		max=head->data;
+	while(ptr!=NULL){
+		if(max<ptr->data){
+			max=ptr->data;
+		}
+		ptr=ptr->next;
+	}
+	}
+	printf("\nMax element is %d",max);
+}
+//MIN ELEMENT IN NODE
+int min_element()
+{
+	int min;
+	struct Node*ptr=head;
+	if(head==NULL)
+	{
+		printf("Linked List is empty");
+	}
+	else
+	{
+		min=head->data;
+	while(ptr!=NULL){
+		if(min>ptr->data){
+			min=ptr->data;
+		}
+		ptr=ptr->next;
+	}
+	}
+	printf("\nMin element is %d",min);
+}
+
+int main()
+{
+    int a[]={3,5,7,9,11,13};
+    create(a,6);
+    display(head);
+    count_nodes(head);
+    sum_of_element(head);
+    max_element();
+    min_element();
+    return 0;
+}
