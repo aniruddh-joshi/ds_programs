@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+    int data;
+    struct node*next;
+}*head=NULL;
+
+void create(int A[],int n)
+{
+    int i;
+    struct node*t,*last;
+    head=(struct node*)malloc(sizeof(struct node));
+    head->data=A[0];
+    head->next=NULL;
+    last=head;
+    
+    for(i=1;i<n;i++)
+    {
+        t=(struct node*)malloc(sizeof(struct node));
+        t->data=A[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+
+void count_nodes(struct node*head)
+{
+    int count=0;
+    if(head==NULL)
+    {
+        printf("LL is empty");
+    }
+    struct node*ptr=NULL;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        count++;
+        ptr=ptr->next;
+    }
+    printf("%d is the number of nodes",count);
+}
+void sum_nodes(struct node*head)
+{
+    int sum=0;
+    if(head==NULL)
+    {
+        printf("LL is empty");
+    }
+    struct node*ptr=NULL;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        sum=sum+ptr->data;
+        ptr=ptr->next;
+    }
+    printf("\n%d is the sum of nodes",sum);
+}
+
+int main()
+{
+    int A[]={3,5,7,8,9,11};
+    create(A,5);
+    count_nodes(head);
+    sum_nodes(head);
+}
