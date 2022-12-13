@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+	int data;
+	struct node*left;
+	struct node*right;
+};
+//Creation
+struct node* create()
+{
+    struct node* root;
+	int x;
+	printf("Enter data(-1 for no data)\n");
+	scanf("%d",&x);
+	
+	if(x==-1)
+	{
+		printf("No data\n");
+		return NULL;
+	}
+	root=(struct node*)malloc(sizeof(struct node));
+	root->data=x;
+		printf("Enter left child of %d\n",x);
+		root->left=create();
+		printf("Enter right child of %d\n",x);
+		root->right=create();
+		return root;
+}
+//prorder traversal
+void preorder(struct node*t)
+{
+	if(t!=NULL)
+	{
+		printf("%d ",t->data);
+		preorder(t->left);
+		preorder(t->right);
+	}
+}
+//inorder traversal
+void inorder(struct node*t)
+{
+	if(t!=NULL)
+	{
+		inorder(t->left);
+		printf("%d ",t->data);
+		inorder(t->right);
+	}
+}
+//postorder traversal
+void postorder(struct node*t)
+{
+	if(t!=NULL)
+	{
+		postorder(t->left);
+		postorder(t->right);
+		printf("%d ",t->data);
+	}
+}
+//Main Function
+int main()
+{
+	struct node* root;
+	root=create();
+	printf("\nThe preorder traversal of tree is\n");
+	preorder(root);
+	printf("\nThe inorder traversal of tree is\n");
+	inorder(root);
+	printf("\nThe postorder traversal of tree is\n");
+	postorder(root);
+	return 0;
+}
