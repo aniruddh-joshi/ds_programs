@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+	int data;
+	struct node*left;
+	struct node*right;
+};
+
+struct node*create()
+{
+	struct node*root;
+	int x;
+	printf("Enter the data(-1 for no data)\n");
+	scanf("%d",&x);
+	if(x==-1)
+	{
+		printf("No data\n");
+		return NULL;
+	}
+	root=(struct node*)malloc(sizeof(struct node));
+	root->data=x;
+	printf("Enter the left child of %d\n",x);
+	root->left=create();
+	printf("Enter the right child of %d\n",x);
+	root->right=create();
+	return root;
+}
+//count leaf nodes
+int leafcount(struct node*ptr)
+{
+	if(ptr!=NULL)
+	{
+		if(ptr->left==NULL && ptr->right==NULL)
+		return leafcount(ptr->left)+leafcount(ptr->right)+1;
+		else
+		return leafcount(ptr->left)+leafcount(ptr->right);
+	}
+	return 0;
+}
+//count non-leaf nodes
+int nonleafcount(struct node*ptr)
+{
+	if (ptr!=NULL)
+	{
+		if(ptr->left!=NULL || ptr->right!=NULL)
+		return nonleafcount(ptr->left)+nonleafcount(ptr->right)+1;
+		else
+		return nonleafcount(ptr->left)+nonleafcount(ptr->right);
+	}
+}
+int main()
+{
+	struct node*root;
+	
+	root=create();
+	printf("Count of leaf nodes is %d",leafcount(root));
+	printf("\n");
+	printf("Count of nonleaf nodes is %d",nonleafcount(root));
+	return 0;
+}
