@@ -1,0 +1,88 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+	int data;
+	struct node*left;
+	struct node*right;
+};
+
+struct node*create()
+{
+	struct node*root;
+	int x;
+	printf("Enter the data(-1 for no data)\n");
+	scanf("%d",&x);
+	if(x==-1)
+	{
+		printf("No data\n");
+		return NULL;
+	}
+	root=(struct node*)malloc(sizeof(struct node));
+	root->data=x;
+	printf("Enter the left child of %d\n",x);
+	root->left=create();
+	printf("Enter the right child of %d\n",x);
+	root->right=create();
+	return root;
+}
+//count nodes with degree 0 or leaf nodes
+int deg0count(struct node*ptr)
+{
+	if(ptr!=NULL)
+	{
+		if(ptr->left==NULL && ptr->right==NULL)
+		return deg0count(ptr->left)+deg0count(ptr->right)+1;
+		else
+		return deg0count(ptr->left)+deg0count(ptr->right);
+	}
+	return 0;
+}
+//count nodes with degree 1
+int deg1count(struct node*ptr)
+{
+	if(ptr!=NULL)
+	{
+		if((ptr->left)!=NULL ^ (ptr->right)!=NULL)
+		return deg1count(ptr->left)+deg1count(ptr->right)+1;
+		else
+		return deg1count(ptr->left)+deg1count(ptr->right);
+	}
+	return 0;
+}
+//count nodes with degree 2
+int deg2count(struct node*ptr)
+{
+	if (ptr!=NULL)
+	{
+		if(ptr->left!=NULL && ptr->right!=NULL)
+		return deg2count(ptr->left)+deg2count(ptr->right)+1;
+		else
+		return deg2count(ptr->left)+deg2count(ptr->right);
+	}
+}
+int main()
+{
+	struct node*root;
+	
+	root=create();
+	printf("Count of deg 0 nodes is %d",deg0count(root));
+	printf("\n");
+	printf("Count of deg 1 nodes is %d",deg1count(root));
+	printf("\n");
+	printf("Count of deg 2 nodes is %d",deg2count(root));
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
