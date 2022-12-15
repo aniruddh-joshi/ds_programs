@@ -42,6 +42,7 @@ int main()
 		 }
 	}
 }
+//Push Function
 void push()
 {
 	if(top>=n-1)
@@ -56,6 +57,7 @@ void push()
 		stk[top]=item;
 	}
 }
+//Pop Function
 void pop()
 {
 	if(top=-1)
@@ -68,6 +70,7 @@ void pop()
 		top=top-1;
 	}
 }
+//Display
 void display()
 {
 	if(top>=0)
