@@ -6,7 +6,7 @@ struct node{
 	struct node*left;
 	struct node*right;
 };
-
+//Creation
 struct node*create()
 {
 	struct node*root;
@@ -61,6 +61,7 @@ int deg2count(struct node*ptr)
 		return deg2count(ptr->left)+deg2count(ptr->right);
 	}
 }
+//Main function
 int main()
 {
 	struct node*root;
