@@ -6,6 +6,7 @@ struct Node{
 	struct Node* next;
 }*head=NULL;
 
+//Create Function
 void create(int A[],int n)
 {
 	int i;
@@ -23,6 +24,8 @@ void create(int A[],int n)
         last = t;
     }
 }
+
+//Display Function
 void display(struct Node *head)
 {
     if(head==NULL)
@@ -37,6 +40,8 @@ void display(struct Node *head)
         ptr=ptr->next;
     }
 }
+
+//Search Function
 int search(struct Node *head, int key)
 {
 	struct Node*ptr=head;
@@ -52,6 +57,8 @@ int search(struct Node *head, int key)
     }
     return NULL;
 }
+
+//Main function
 int main()
 {
 	int key;
