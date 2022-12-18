@@ -5,6 +5,7 @@ struct Node{
     struct Node*next;
 }*head=NULL;
 
+//Create Function
 void create(int A[],int n)
 {
     int i;
@@ -23,6 +24,8 @@ void create(int A[],int n)
         last=t;
     }
 }
+
+//Display Function
 void display(struct Node *head)
 {
     if(head==NULL)
@@ -37,6 +40,8 @@ void display(struct Node *head)
         ptr=ptr->next;
     }
 }
+
+//Count Nodes
 void count_nodes(struct Node*head)
 {
     int count=0;
