@@ -13,7 +13,6 @@ void Bubble(int A[],int n)
 	int i,j,flag=0;
 	for(i=0;i<n-1;i++)
 	{
-		flag=0;
 		for(j=0;j<n-i-1;j++)
 		{
 			if(A[j]>A[j+1])
@@ -33,13 +32,13 @@ int main()
 	printf("Enter the range of Numbers\n");
 	scanf("%d",&n);
 	printf("Enter the elements in the list\n");
-	for(i=0;i<n-1;i++)
+	for(i=0;i<n;i++)
 	{
 		scanf("%d",&A[i]);
 	}
 	Bubble(A,n);
-	printf("Sorted List is :- ");
-	for(i=0;i<n-1;i++)
+	printf("\nSorted List is :- ");
+	for(i=0;i<n;i++)
 	
 		printf("%d ",A[i]);
 	printf("\n");
