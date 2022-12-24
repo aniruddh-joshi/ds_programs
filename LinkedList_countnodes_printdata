@@ -58,6 +58,7 @@ void count_nodes(struct Node*head)
     }
     printf("\nNumber of Nodes is %d",count);
 }
+//Main Function
 int main()
 {
     int a[]={3,5,7,9,11,13};
