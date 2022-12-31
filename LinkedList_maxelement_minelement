@@ -114,7 +114,7 @@ int min_element()
 	}
 	printf("\nMin element is %d",min);
 }
-
+//Main Function
 int main()
 {
     int a[]={3,5,7,9,11,13};
