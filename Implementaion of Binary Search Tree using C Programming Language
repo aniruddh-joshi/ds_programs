@@ -22,6 +22,7 @@ void inorder(struct node *root)
 
 int main()
 {
+	printf("Implementation of Binary Search");
 	int n , i;
 	struct node *p , *q , *root;
 	printf("Enter the number of nodes to be insert: ");
